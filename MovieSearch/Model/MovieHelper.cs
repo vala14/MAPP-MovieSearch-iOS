@@ -9,11 +9,11 @@ using DM.MovieApi.MovieDb.Movies;
 
 namespace MovieSearch
 {
-	public class Movies
+	public class MovieHelper
 	{
 		private List<Movie> _movies;
 
-		public Movies()
+		public MovieHelper()
 		{
 			MovieDbFactory.RegisterSettings(new MovieDbSettings());
 			this._movies = new List<Movie>();

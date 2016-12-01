@@ -15,28 +15,27 @@ namespace MovieSearch.iOS
 	public class TopRatedMovieController : UITableViewController
 	{
 		private List<Movie> _topMoviesList;
-		private Movies _movies;
+		private MovieHelper _movieHelper;
 		UIActivityIndicatorView activitySpinner;
 		private bool _reload;
-
-		public void setReload(bool reload)
-		{
-			this._reload = reload;
-		}
-
 		private const int HorizontalMargin = 20;
 		private const int StartY = 0;
 		private const int StepY = 50;
 		private int _yCoord;
 
-		public TopRatedMovieController(Movies movies)
+		public TopRatedMovieController(MovieHelper movieHelper)
 		{
 			this._reload = true;
 			MovieDbFactory.RegisterSettings(new MovieDbSettings());
-			this._movies = movies;
+			this._movieHelper = movieHelper;
 			_topMoviesList = new List<Movie>();
 			this.TabBarItem = new UITabBarItem(UITabBarSystemItem.Favorites, 0);
 			activitySpinner = new UIActivityIndicatorView(UIActivityIndicatorViewStyle.Gray);
+		}
+
+		public void setReload(bool reload)
+		{
+			this._reload = reload;
 		}
 
 		public async override void ViewDidAppear(bool animated)
@@ -69,19 +68,6 @@ namespace MovieSearch.iOS
 		{
 			this._yCoord = StartY;
 			this.Title = "Top rated movies";
-
-			//// Set spinner
-			//SetSpinner();
-
-			//// Get movies
-			//await GetTopRatedMovies();
-
-			//// Stop spinner
-			//activitySpinner.StopAnimating();
-
-			//TableView.ReloadData();
-			//// Set source
-			//this.TableView.Source = new MovieListSource(this._topMoviesList, OnSelectedMovie);
 		}
 
 		private void SetSpinner()
@@ -102,13 +88,13 @@ namespace MovieSearch.iOS
 			var movieApi = MovieDbFactory.Create<IApiMovieRequest>().Value;
 			ApiSearchResponse<MovieInfo> responseMovieInfos = await movieApi.GetTopRatedAsync();
 
-			await _movies.GetMovies(responseMovieInfos);
-			_topMoviesList = _movies.MoviesList;
+			await _movieHelper.GetMovies(responseMovieInfos);
+			_topMoviesList = _movieHelper.MoviesList;
 
 			// Set image path
 			StorageClient client = new StorageClient();
 			ImageDownloader downloader = new ImageDownloader(client);
-			foreach (Movie m in _movies.MoviesList)
+			foreach (Movie m in _movieHelper.MoviesList)
 			{
 				if (m.ImagePath != null)
 				{

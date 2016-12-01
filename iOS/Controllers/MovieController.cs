@@ -13,14 +13,14 @@ namespace MovieSearch.iOS
 {
 	public class MovieController : UIViewController
 	{
-		private Movies _movies;
+		private MovieHelper _movieHelper;
 		UIActivityIndicatorView activitySpinner;
 
-		public MovieController(Movies movies)
+		public MovieController(MovieHelper movieHelper)
 		{
 			// Initialize spinner
 			MovieDbFactory.RegisterSettings(new MovieDbSettings());
-			this._movies = movies;
+			this._movieHelper = movieHelper;
 			this.TabBarItem = new UITabBarItem(UITabBarSystemItem.Search, 0);
 			activitySpinner = new UIActivityIndicatorView(UIActivityIndicatorViewStyle.Gray);
 		}
@@ -46,11 +46,8 @@ namespace MovieSearch.iOS
 			this.View.BackgroundColor = UIColor.White;
 
 			this._yCoord = StartY;
-
 			var prompt = this.CreatePrompt();
-
 			var movieField = this.CreateMovieField();
-
 			var getMoviesButton = this.CreateButton("Get movies");
 
 			getMoviesButton.TouchUpInside += async (sender, args) =>
@@ -67,12 +64,12 @@ namespace MovieSearch.iOS
 				this.View.AddSubview(activitySpinner);
 				activitySpinner.StartAnimating();
 
-				await _movies.GetMovies(responseMovieInfos);
+				await _movieHelper.GetMovies(responseMovieInfos);
 
 				// set imgpath
 				StorageClient client = new StorageClient();
 				ImageDownloader downloader = new ImageDownloader(client);
-				foreach (Movie m in _movies.MoviesList)
+				foreach (Movie m in _movieHelper.MoviesList)
 				{
 					if (m.ImagePath != null)
 					{
@@ -92,10 +89,9 @@ namespace MovieSearch.iOS
 					}
 				}
 
-				this.NavigationController.PushViewController(new MovieListController(_movies.MoviesList), true);
+				this.NavigationController.PushViewController(new MovieListController(_movieHelper.MoviesList), true);
 
 				getMoviesButton.Enabled = true;
-				//activitySpinner.StopAnimating();
 				movieField.Text = null;
 			};
 

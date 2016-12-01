@@ -5,10 +5,6 @@ namespace MovieSearch.iOS
 {
 	public class TabBarDelegate : UITabBarControllerDelegate
 	{
-		public TabBarDelegate()
-		{
-		}
-
 		public override void ViewControllerSelected(UITabBarController tabBarController, UIViewController viewController)
 		{
 			if (viewController.GetType() == typeof(UINavigationController))
@@ -22,7 +18,6 @@ namespace MovieSearch.iOS
 					controller.setReload(true);
 				}
 			}
-			// set reload = true
 		}
 	}
 }

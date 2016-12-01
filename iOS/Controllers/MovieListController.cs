@@ -21,7 +21,5 @@ namespace MovieSearch.iOS
 		}
 
 		private void OnSelectedMovie(int row) 		{ 			this.NavigationController.PushViewController(new MovieInfoController(this._movieList[row]),false); 		}
-
-		//is disapper - ismovedtoparent - er þá hægt að kalla á eh fall í TopRatedMovieController? 
 	}
 }

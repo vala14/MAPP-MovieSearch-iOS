@@ -31,7 +31,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="MovieDbSettings.cs" />
     <Compile Include="Model\Movie.cs" />
-    <Compile Include="Model\Movies.cs" />
+    <Compile Include="Model\MovieHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json">

@@ -14,8 +14,8 @@ namespace MovieSearch.iOS
 		//private List<Movie> _searchedMovies;
 		//private List<Movie> _topRatedMovies;
 
-		private Movies _searchMovies;
-		private Movies _topRatedMovies;
+		private MovieHelper _searchMoviesHelper;
+		private MovieHelper _topRatedMoviesHelper;
 
 		public override UIWindow Window
 		{
@@ -25,16 +25,16 @@ namespace MovieSearch.iOS
 
 		public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
 		{
-			this._searchMovies = new Movies();
-			this._topRatedMovies = new Movies();
+			this._searchMoviesHelper = new MovieHelper();
+			this._topRatedMoviesHelper = new MovieHelper();
 			// Override point for customization after application launch.
 			// If not required for your application you can safely delete this method
 			this.Window = new UIWindow(UIScreen.MainScreen.Bounds);
 
-			var movieController = new MovieController(this._searchMovies);
+			var movieController = new MovieController(this._searchMoviesHelper);
 			var movieNavigationController = new UINavigationController(movieController);
 
-			var topRatedMovieController = new TopRatedMovieController(this._topRatedMovies);
+			var topRatedMovieController = new TopRatedMovieController(this._topRatedMoviesHelper);
 			var topRatedMovieNavigationController = new UINavigationController(topRatedMovieController);
 
 			var tabBarController = new TabBarController()
