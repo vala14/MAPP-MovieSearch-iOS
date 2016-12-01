@@ -13,7 +13,6 @@ namespace MovieSearch.iOS
 				var navController = tmp.TopViewController;
 				if (navController.GetType() == typeof(TopRatedMovieController))
 				{
-					Console.WriteLine("hehehe");
 					TopRatedMovieController controller = (TopRatedMovieController)navController;
 					controller.setReload(true);
 				}

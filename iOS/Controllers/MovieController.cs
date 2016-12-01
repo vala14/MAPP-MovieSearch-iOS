@@ -52,10 +52,6 @@ namespace MovieSearch.iOS
 
 			getMoviesButton.TouchUpInside += async (sender, args) =>
 			{
-				// API call to get searched movies 
-				var movieApi = MovieDbFactory.Create<IApiMovieRequest>().Value;
-				ApiSearchResponse<MovieInfo> responseMovieInfos = await movieApi.SearchByTitleAsync(movieField.Text == null ? "" : movieField.Text);
-
 				movieField.ResignFirstResponder();
 				getMoviesButton.Enabled = false;
 
@@ -63,6 +59,10 @@ namespace MovieSearch.iOS
 				activitySpinner.AutoresizingMask = UIViewAutoresizing.All;
 				this.View.AddSubview(activitySpinner);
 				activitySpinner.StartAnimating();
+
+				// API call to get searched movies 
+				var movieApi = MovieDbFactory.Create<IApiMovieRequest>().Value;
+				ApiSearchResponse<MovieInfo> responseMovieInfos = await movieApi.SearchByTitleAsync(movieField.Text == null ? "" : movieField.Text);
 
 				await _movieHelper.GetMovies(responseMovieInfos);
 
