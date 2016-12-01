@@ -16,10 +16,5 @@ namespace MovieSearch.iOS
 			this.TabBar.BackgroundColor = UIColor.LightGray;
 			this.SelectedIndex = 0;
 		}
-
-		public override void ViewWillAppear(bool animated)
-		{
-			base.ViewWillAppear(animated);
-		}
 	}
 }

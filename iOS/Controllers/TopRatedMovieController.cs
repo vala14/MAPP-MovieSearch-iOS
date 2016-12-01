@@ -39,9 +39,9 @@ namespace MovieSearch.iOS
 			activitySpinner = new UIActivityIndicatorView(UIActivityIndicatorViewStyle.Gray);
 		}
 
-		public async override void ViewWillAppear(bool animated)
+		public async override void ViewDidAppear(bool animated)
 		{
-			base.ViewWillAppear(animated);
+			base.ViewDidAppear(animated);
 			if (this._reload)
 			{
 				// Reset the list
