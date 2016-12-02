@@ -37,7 +37,6 @@ namespace MovieSearch.iOS
 		public override void LayoutSubviews()
 		{
 			base.LayoutSubviews();
-
 			this._imageView.Frame = new CGRect(5, 5, 25, 34);
 			this._nameLabel.Frame = new CGRect(25 + 10, 5, this.ContentView.Bounds.Width - 40, 25);
 			this._actorsLabel.Frame = new CGRect(25 + 10, 22, this.ContentView.Bounds.Width - 40, 25);
@@ -49,6 +48,7 @@ namespace MovieSearch.iOS
 			this._nameLabel.Text = name + " (" + year + ")";
 			this._actorsLabel.Text = actors;
 
+			// Arrow at the end
 			this.Accessory = UITableViewCellAccessory.DisclosureIndicator;
 		}
 	}

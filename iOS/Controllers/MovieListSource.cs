@@ -36,6 +36,7 @@ namespace MovieSearch.iOS
 			return this._movieList.Count;
 		}
 
-		public override void RowSelected(UITableView tableView, NSIndexPath indexPath) 		{ 			tableView.DeselectRow(indexPath, true); 			this._onSelectedMovie(indexPath.Row); 		}
+		public override void RowSelected(UITableView tableView, NSIndexPath indexPath) 		{
+			// Remove gray background that appears when a row is selected 			tableView.DeselectRow(indexPath, true); 			this._onSelectedMovie(indexPath.Row); 		}
 	}
 }
