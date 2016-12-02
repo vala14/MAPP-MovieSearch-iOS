@@ -106,6 +106,17 @@
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon-29x29.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon-120x120.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon-87x87.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon-80x80.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon-40x40.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon-72x72.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon-57x57.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon-58x58.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon-180x180.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon-50x50.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon-114x114.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
@@ -113,8 +124,8 @@
     <Folder Include="Controllers\" />
   </ItemGroup>
   <ItemGroup>
-    <InterfaceDefinition Include="LaunchScreen.storyboard" />
     <InterfaceDefinition Include="Main.storyboard" />
+    <InterfaceDefinition Include="LaunchScreen.storyboard" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -132,6 +143,10 @@
     <Compile Include="Controllers\TabBarController.cs" />
     <Compile Include="Controllers\TopRatedMovieController.cs" />
     <Compile Include="Controllers\TabBarDelegate.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\SplashLogo.png" />
+    <BundleResource Include="Resources\SplashColour.png" />
   </ItemGroup>
   <Import Project="..\MovieDownload\MovieDownload.projitems" Label="Shared" Condition="Exists('..\MovieDownload\MovieDownload.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
