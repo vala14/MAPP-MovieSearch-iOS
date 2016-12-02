@@ -33,33 +33,16 @@ namespace MovieSearch.iOS
 			this.View.BackgroundColor = UIColor.White;
 			this.Title = "Movie info";
 
-
 			var movieNameAndYear = this.MovieInfoText(  _movieInfo.Name + " (" + _movieInfo.YearReleased + ")", new CGRect(HorizontalMargin, _yCoord + 10, this.View.Bounds.Width - 40, 50), "AppleSDGothicNeo-Bold", 20f);
 			var movieInfo = this.MovieInfoText(_movieInfo.RunningTime.ToString() + " min | " + _movieInfo.Genres, new CGRect(HorizontalMargin, _yCoord + 25, this.View.Bounds.Width - 40, 15), "AppleSDGothicNeo-UltraLight", 14f);
-			//var movieOverview = this.MovieInfoText(_movieInfo.Overview, new CGRect(HorizontalMargin + this.View.Bounds.Width / 2 - 45 + 10, 150, this.View.Bounds.Width / 2, 200), "AppleSDGothicNeo-Regular", 14f);
-			var movieOverview = new UITextView()
-			{
-				Font = UIFont.FromName("AppleSDGothicNeo-Regular", 14f),
-				Frame = new CGRect(HorizontalMargin + this.View.Bounds.Width / 2 - 45 + 10, 150, this.View.Bounds.Width / 2, 	350),
-				Text = _movieInfo.Overview,
-				TextAlignment = UITextAlignment.Justified
-
-			};
-			this._yCoord += StepY;
-
-
+			var movieOverview = MovieOverview(_movieInfo.Overview);
 			this._imageView.Frame = new CGRect(HorizontalMargin, _yCoord - 10, this.View.Bounds.Width / 2 - 45, (this.View.Bounds.Width / 2 - 45) * 1.3);
 			this._imageView.Image = UIImage.FromFile(_movieInfo.ImagePath);
-
-	
-
 
 			this.View.AddSubview(this._imageView);
 			this.View.AddSubview(movieNameAndYear);
 			this.View.AddSubview(movieInfo);
-			//movieOverview.SizeThatFits(new CGSize(this.View.Bounds.Width / 2 , this.View.Bounds.Height - 270));
 			this.View.AddSubview(movieOverview);
-
 		}
 
 		private UILabel MovieInfoText(string text, CGRect rect, string font, float fontSize)
@@ -75,6 +58,18 @@ namespace MovieSearch.iOS
 			this._yCoord += StepY;
 
 			return prompt;
+		}
+
+		private UITextView MovieOverview(string text) { 
+			var movieOverview = new UITextView()
+			{
+				Font = UIFont.FromName("AppleSDGothicNeo-Regular", 14f),
+				Frame = new CGRect(HorizontalMargin + this.View.Bounds.Width / 2 - 45 + 10, 150, this.View.Bounds.Width / 2, 350),
+				Text = text,
+				TextAlignment = UITextAlignment.Justified
+			};
+			this._yCoord += StepY;
+			return movieOverview;
 		}
 	}
 }
