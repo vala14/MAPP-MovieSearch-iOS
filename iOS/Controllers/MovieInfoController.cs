@@ -30,7 +30,7 @@ namespace MovieSearch.iOS
 
 			this._yCoord = StartY;
 
-			this.View.BackgroundColor = UIColor.White;
+			this.View.BackgroundColor = UIColor.FromRGB(245, 244, 244);
 			this.Title = "Movie info";
 
 			var movieNameAndYear = this.MovieInfoText(  _movieInfo.Name + " (" + _movieInfo.YearReleased + ")", new CGRect(HorizontalMargin, _yCoord + 10, this.View.Bounds.Width - 40, 50), "AppleSDGothicNeo-Bold", 20f);
@@ -66,10 +66,12 @@ namespace MovieSearch.iOS
 				Font = UIFont.FromName("AppleSDGothicNeo-Regular", 14f),
 				Frame = new CGRect(HorizontalMargin + this.View.Bounds.Width / 2 - 45 + 10, 150, this.View.Bounds.Width / 2, 350),
 				Text = text,
-				TextAlignment = UITextAlignment.Justified
+				TextAlignment = UITextAlignment.Justified,
+				BackgroundColor = UIColor.FromRGB(245, 244, 244)
 			};
 			this._yCoord += StepY;
 			return movieOverview;
+			             
 		}
 	}
 }

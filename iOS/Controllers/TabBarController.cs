@@ -14,6 +14,7 @@ namespace MovieSearch.iOS
 		{
 			base.ViewDidLoad();
 			this.TabBar.BackgroundColor = UIColor.LightGray;
+			this.TabBar.TintColor = UIColor.LightGray;
 			this.SelectedIndex = 0;
 		}
 	}

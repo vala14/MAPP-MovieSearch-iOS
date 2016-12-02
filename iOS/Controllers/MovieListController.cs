@@ -15,7 +15,7 @@ namespace MovieSearch.iOS
 
 		public override void ViewDidLoad()
 		{
-			this.View.BackgroundColor = UIColor.White;
+			this.View.BackgroundColor = UIColor.FromRGB(245, 244, 244);
 			this.Title = "Movie list";
 			this.TableView.Source = new MovieListSource(this._movieList, OnSelectedMovie);
 		}

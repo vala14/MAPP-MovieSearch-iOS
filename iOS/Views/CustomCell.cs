@@ -32,6 +32,7 @@ namespace MovieSearch.iOS
 			};		
 
 			this.ContentView.AddSubviews(new UIView[] { this._imageView, this._nameLabel, this._actorsLabel });
+			this.BackgroundColor = UIColor.FromRGB(245, 244, 244);
 		}
 
 		public override void LayoutSubviews()

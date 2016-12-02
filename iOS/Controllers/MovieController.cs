@@ -26,9 +26,7 @@ namespace MovieSearch.iOS
 		}
 
 		private const int HorizontalMargin = 20;
-
-		private const int StartY = 80;
-
+		private const int StartY = 160;
 		private const int StepY = 50;
 
 		private int _yCoord;
@@ -43,7 +41,7 @@ namespace MovieSearch.iOS
 		{
 			base.ViewDidLoad();
 			this.Title = "Movie search";
-			this.View.BackgroundColor = UIColor.White;
+			this.View.BackgroundColor = UIColor.FromRGB(245,244,244);
 
 			this._yCoord = StartY;
 			var prompt = this.CreatePrompt();
@@ -101,10 +99,17 @@ namespace MovieSearch.iOS
 		}
 
 		private UIButton CreateButton(string title)
-		{ 
+		{
+			this._yCoord += 20;
 			var button = UIButton.FromType(UIButtonType.RoundedRect);
+			button.Layer.CornerRadius = 25;
+			button.Layer.BorderWidth = 0.1f;
+			button.Layer.BorderColor = UIColor.DarkGray.CGColor;
+			button.Layer.BackgroundColor = UIColor.LightGray.CGColor;
+
 			button.Frame = new CGRect(HorizontalMargin, this._yCoord, this.View.Bounds.Width - 2 * HorizontalMargin, 50);
 			button.SetTitle(title, UIControlState.Normal);
+			button.SetTitleColor(UIColor.White, UIControlState.Normal);
 			this._yCoord += StepY;
 			return button;
 		}
@@ -113,11 +118,12 @@ namespace MovieSearch.iOS
 		{
 			var prompt = new UILabel()
 			{
-				Frame = new CGRect(HorizontalMargin, this._yCoord, this.View.Bounds.Width, 50),
-				Text = "Enter words in movie title: "
+				Font = UIFont.FromName("AppleSDGothicNeo-UltraLight", 18f),
+				Frame = new CGRect(0, this._yCoord, this.View.Bounds.Width, 50),
+				Text = "Enter words in movie title: ",
+				TextAlignment = UITextAlignment.Center
 			};
 			this._yCoord += StepY;
-
 			return prompt;
 		}
 
@@ -126,10 +132,15 @@ namespace MovieSearch.iOS
 			var movieField = new UITextField()
 			{
 				Frame = new CGRect(HorizontalMargin, this._yCoord, this.View.Bounds.Width - 2 * HorizontalMargin, 50),
-				BorderStyle = UITextBorderStyle.RoundedRect,
-				Placeholder = "Movie title"
+				BorderStyle = UITextBorderStyle.None,
+				Placeholder = "Movie title",
+				TextAlignment = UITextAlignment.Center,
 			};
 			this._yCoord += StepY;
+
+			movieField.Layer.CornerRadius = 25;
+			movieField.Layer.BorderWidth = 0.1f;
+			movieField.Layer.BorderColor = UIColor.DarkGray.CGColor;
 
 			return movieField;
 		}
